@@ -1,0 +1,60 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+iris = pd.read_csv("iris.csv")
+iris.head(5)
+
+iris.dtypes
+
+from sklearn import preprocessing
+enc = preprocessing.OneHotEncoder()
+enc_iris = pd.DataFrame(enc.fit_transform(iris[['SepalLengthCm']]).toarray())
+enc_iris
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+iris['Species'] = le.fit_transform(iris['Species'])
+newiris=iris
+iris.head(7)
+
+x = iris.iloc[:, :-1].values
+print(x)
+
+y = iris.iloc[:, -1].values
+print(y)
+
+x = iris.drop(['SepalLengthCm'], axis = 1)
+y = iris['SepalLengthCm']
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from sklearn.metrics import accuracy_score
+
+#function
+def train_test_rmse(x,y):
+    x = iris_data[x]
+    y = iris_data[y]
+    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 0.2,random_state=123)
+    linreg = LinearRegression()
+    linreg.fit(X_train, y_train)
+    y_pred = linreg.predict(X_test)
+    print(accuracy_score(y_test, y_pred))  # or you can save it in variable and return it 
+    return np.sqrt(metrics.mean_squared_error(y_test, y_pred))
+ 
+import numpy as np
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=42)
+import numpy as np
+X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
+Y = np.array([1, 1, 1, 2, 2, 2])
+from sklearn.naive_bayes import GaussianNB
+gaussian = GaussianNB()
+gaussian.fit(X, Y)
+
+Y_pred = gaussian.predict(X_test)
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
+
+confusion_matrix(y_true, y_pred)
+
+ac = accuracy_score(y_test,Y_pred)
+print(ac)
