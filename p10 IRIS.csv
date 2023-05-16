@@ -1,0 +1,51 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv("IRIS.csv")
+df.head()
+
+df.mean()
+
+df.median()
+
+df.mode()
+df.max()
+
+df.min()
+
+df.var()
+
+df.std()
+
+plt.figure(figsize = (10, 7))
+x = df["sepal_length"]
+
+plt.hist(x, bins = 20, color = "green")
+plt.title("Sepal Length in cm")
+plt.xlabel("Sepal_Length_cm")
+plt.ylabel("Count")
+plt.show()
+
+plt.figure(figsize = (10, 7))
+x = df.sepal_width
+
+plt.hist(x, bins = 20, color = "green")
+plt.title("Sepal Width in cm")
+plt.xlabel("Sepal_Width_cm")
+plt.ylabel("Count")
+plt.show()
+
+plt.figure(figsize = (10, 7))
+x =df.petal_length
+
+plt.hist(x, bins = 20, color = "green")
+plt.title("Petal Length in cm")
+plt.xlabel("Petal_Length_cm")
+plt.ylabel("Count")
+
+plt.show()
+
+plt.figure(figsize = (10, 7))
+df.boxplot()
+plt.show()
