@@ -1,0 +1,41 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("employee_data.csv")
+df
+
+df.mean()
+
+df.loc[:,'age'].mean()
+
+df.mean(axis=1)[0:4]
+
+df.median()
+
+df.loc[:,'age'].median()
+df.mode()
+df.min()
+df.max()
+
+df.loc[:,'age'].min(skipna = False)
+
+df.std()
+
+from sklearn import preprocessing 
+enc = preprocessing.OneHotEncoder()
+enc_df = pd.DataFrame(enc.fit_transform(df[['groups']]).toarray())
+enc_df
+
+import pandas as pd
+csv_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+col_names = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width','Species']
+iris = pd.read_csv(csv_url, names = col_names)
+irisSet = (iris['Species']== 'Iris-setosa')
+print('Iris-setosa')
+Iris-setosa
+print(iris[irisSet].describe())
+
+irisVir = (iris['Species']== 'Iris-virginica')
+print('Iris-virginica')
+print(iris[irisVir].describe())
