@@ -1,0 +1,54 @@
+Mathss score  Reading Score  Writing s Placement s Club join year Placement offer count
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("studentperformance.csv")
+df.head()
+df.isnull()
+series = pd.isnull (df["Math Score"])
+df[series]
+df.notnull()
+series = pd.notnull (df["Math Score"])
+df[series]
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+df['Gender']=le.fit_transform(df['Gender'])
+newdf = df
+df
+
+missing_values = ["Na","na"]
+df = pd.read_csv("studentperformance.csv",na_values=missing_values)
+df
+
+ndf = df
+ndf.fillna(0)
+
+ndf.dropna()
+
+col = ['Math Score', 'Reading Score' , 'Writing Score','Placement Score'
+df.boxplot(col)
+
+print(np.where(df['Math Score']>90))
+print(np.where(df['Reading Score']<25))
+print(np.where(df['Writing Score']<30))
+
+fig, ax = plt.subplots(figsize = (18,10))
+ax.scatter(df['Placement Score'], df['Placement offer count'])
+plt.show()
+ax.set_xlabel('(Proportion non-retail businessacres)/(town)')
+ax.set_ylabel('(Full-value property-tax rate)/($10,000)')
+
+import matplotlib.pyplot as plt
+import pandas as pd
+col = ['Reading Score']
+df.boxplot(col)
+sp=pd.read_csv("studentperformance.csv")
+median=np.median(sorted_rscore)
+median
+df=pd.read_csv("studentperformance.csv")
+
+df['Math Score'].plot (kind='hist')
+plt.show()
+
