@@ -1,25 +1,30 @@
 %matplotlib inline
 plt.show()
+
 import numpy as np
 import pandas  as pd 
 import matplotlib.pyplot as plt 
 import seaborn as sns
+
 dataset = sns.load_dataset('titanic')
+
 dataset.head()
 
 sns.distplot(dataset['fare'])
-
 
 sns.distplot(dataset['fare'], kde=False, bins=10)
 
 sns.jointplot(x='age', y='fare', data=dataset)
 
-
 sns.jointplot(x='age', y='fare', data=dataset, kind='hex')
 
 dataset = dataset.dropna()
+
 sns.pairplot(dataset)
+
 sns.pairplot(dataset, hue='sex')
+
+sns.rugplot(dataset['fare'])
 
 sns.barplot(x='sex', y='age', data=dataset)
 
@@ -27,6 +32,7 @@ sns.barplot(x='sex', y='age', data=dataset)
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 sns.barplot(x='sex', y='age', data=dataset, estimator=np.std)
 
 sns.boxplot(x='sex', y='age', data=dataset)
@@ -36,7 +42,6 @@ sns.violinplot(x='sex', y='age', data=dataset)
 sns.violinplot(x='sex', y='age', data=dataset, hue='survived', split=True)
 
 sns.stripplot(x='sex', y='age', data=dataset, jitter=True)
-<matplotlib.axes._subplots.AxesSubplot at 0x7f3ee0a60f90>
 
 sns.stripplot(x='sex', y='age', data=dataset, jitter=True, hue='survived')
 
@@ -44,6 +49,15 @@ sns.swarmplot(x='sex', y='age', data=dataset)
 <matplotlib.axes._subplots.AxesSubplot at 0x7f3ee08752d0>
 
 sns.swarmplot(x='sex', y='age', data=dataset, hue='survived')
+
+sns.violinplot(x='sex', y='age', data=dataset)
+sns.swarmplot(x='sex', y='age', data=dataset, color='black')
+
+sns.violinplot(x='sex', y='age', data=dataset, hue='survived', split=True)
+
+sns.stripplot(x='sex', y='age', data=dataset)
+
+sns.swarmplot(x='sex', y='age', data=dataset)
 
 sns.violinplot(x='sex', y='age', data=dataset)
 sns.swarmplot(x='sex', y='age', data=dataset, color='black')
