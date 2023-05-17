@@ -2,9 +2,13 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 from seaborn import load_dataset
+
 data = pd.read_csv("titanic_train.csv")
+
 tips = load_dataset("tips")
+
 sns.countplot(data['Survived'])
 plt.show()
 
@@ -12,13 +16,19 @@ data['Sex'].value_counts().plot(kind="pie", autopct="%.2f")
 plt.show()
 
 data = data.dropna()
+
 plt.hist(data['Age'], bins=5)
+plt.show()
+
+sns.distplot(data['Age'])
 plt.show()
 
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 print(sns.__version__)
+
 sns.scatterplot(tips["total_bill"], tips["tip"])
 plt.show()
 
@@ -42,6 +52,7 @@ pd.crosstab(data['Pclass'], data['Survived'])
 
 sns.heatmap(pd.crosstab(data['Pclass'], data['Survived']))
 plt.show()
+
 
 sns.clustermap(pd.crosstab(data['Parch'], data['Survived']))
 plt.show()
