@@ -13,13 +13,15 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 
+text="Tokenization is the first step in text analytics. The process of breaking down a text paragraph into smaller chunks such as words or sentences is called Tokenization."
+
 tokenized_text=sent_tokenize(text)
 print(tokenized_text)
 #word tokenization
 tokenized_word=word_tokenize(text)
 print(tokenized_word)
-['Tokenization is the first step in text analytics.', 'The process of breaking down a text paragraph into smaller chunks such as words or sentences is called Tokenization.']
-['Tokenization', 'is', 'the', 'first', 'step', 'in', 'text', 'analytics', '.', 'The', 'process', 'of', 'breaking', 'down', 'a', 'text', 'paragraph', 'into', 'smaller', 'chunks', 'such', 'as', 'words', 'or', 'sentences', 'is', 'called', 'Tokenization', '.']
+
+
 #Print stop words of english
 stop_words=set(stopwords.words("english"))
 print(stop_words)
@@ -39,17 +41,25 @@ ps=PorterStemmer()
 for w in e_words:
     rootWord=ps.stem(w)
 print(rootWord)
-wait
+
 #Lemmetization
 wordnet_lemmatizer=WordNetLemmatizer()
 text="studies studying cries cry"
 tokenization=nltk.word_tokenize(text)
 for w in tokenization:
     print("Lemma for {} is {}".format(w,wordnet_lemmatizer.lemmatize(w)))
+
+#Pos tagging
+data="The pink sweater fit her perfectly"
+words=word_tokenize(data)
+for word in words:
+    print(nltk.pos_tag([word]))
     
-    import pandas as pd
+    
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 import math
+
 documentA='Jupiter is the largest Planet'
 documentB='Mars is the fourth planet from the Sun'
 bagOfWordsA=documentA.split(' ')
@@ -61,6 +71,8 @@ for word in bagOfWordsA:
     numOfWordsB=dict.fromkeys(uniqueWords,0)
 for word in bagOfWordsB:
     numOfWordsB[word]+=1
+    
+    
 def computeTF(wordDict,bagOfWords):
     tfDict={}
     bagOfWordsCount = len(bagOfWords)
@@ -91,4 +103,5 @@ def computeTFIDF(tfBagOfWords, idfs):
 tfidfA = computeTFIDF(tfA, idfs)
 tfidfB = computeTFIDF(tfB, idfs)
 df = pd.DataFrame([tfidfA, tfidfB])
+
 df
