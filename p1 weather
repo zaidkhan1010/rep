@@ -5,14 +5,17 @@ import seaborn as sns
 
 weather=pd.read_csv("weatherAUS.csv")
 weather.head()
-weather.info()
+#weather.info()
 weather.desc()
 eather.describe(include='all')
 weather.head(n=5)
 weather.tail(n=5)
 weather.shape
+weather.index
 weather.dtypes
 weather[0:3]
+weather.sort_index(axis=1, ascending=False)
 weather.loc[:,["Data","Location"]]
 weather.iloc[:,:3]
 weather.iloc[:5,:6]
+weather.iloc[:2,:]
