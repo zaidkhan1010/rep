@@ -3,19 +3,45 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-weather=pd.read_csv("weatherAUS.csv")
+weather = pd.read_csv("weatherAUS.csv")
 weather.head()
-#weather.info()
-weather.desc()
-eather.describe(include='all')
+
+# View summary information of the DataFrame
+weather.info()
+
+# Get descriptive statistics of the DataFrame
+weather.describe(include='all')
+
+# View the first 5 rows of the DataFrame
 weather.head(n=5)
+
+# View the last 5 rows of the DataFrame
 weather.tail(n=5)
+
+# Get the dimensions of the DataFrame
 weather.shape
+
+# Get the index of the DataFrame
 weather.index
+
+# Get the data types of each column in the DataFrame
 weather.dtypes
-weather[0:3]
+
+# Access specific rows of the DataFrame
+weather.loc[0:2]
+
+# Sort the DataFrame by column names in descending order
 weather.sort_index(axis=1, ascending=False)
-weather.loc[:,["Data","Location"]]
-weather.iloc[:,:3]
-weather.iloc[:5,:6]
-weather.iloc[:2,:]
+
+# Select specific columns from the DataFrame
+weather.loc[:, ["Date", "Location"]]
+
+# Access specific rows and columns of the DataFrame using integer-based indexing
+weather.iloc[:, :3]
+
+# Access the first 5 rows and first 6 columns of the DataFrame
+weather.iloc[:5, :6]
+
+# Access the first 2 rows of the DataFrame
+weather.iloc[:2, :]
+
